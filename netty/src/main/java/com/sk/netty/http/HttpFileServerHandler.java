@@ -13,19 +13,24 @@ import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
+import static io.netty.handler.codec.http.HttpResponseStatus.*;
+import static io.netty.handler.codec.http.HttpMethod.*;
+import static io.netty.handler.codec.http.HttpVersion.*;
+import static io.netty.handler.codec.http.HttpHeaders.Names.*;
+import static io.netty.handler.codec.http.HttpHeaders.*;
+//import static io.netty.handler.codec.http.HttpHeaderUtil.*;
 
 /**
  * Created with IntelliJ IDEA.
  * User: sunkun
  * Date: 2017/5/31
  * Time: 13:10
- */
-public class HttpFileServerHandler/* extends SimpleChannelInboundHandler<FullHttpRequest> */{
-	/*private final String url;
+ *//**/
+public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
+	private final String url;
 
-	public HttpFileServerHandler(String url) {
+    public HttpFileServerHandler(String url) {
 		this.url = url;
 	}
 
@@ -77,8 +82,8 @@ public class HttpFileServerHandler/* extends SimpleChannelInboundHandler<FullHtt
 		}
 
 		long fileLength = randomAccessFile.length();
-		HttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK);
-		setContentLngth(response, fileLength);
+		HttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, OK);
+		setContentLength(response, fileLength);
 		setContentTypeHeader(response, file);
 		if(isKeepAlive(request)) {
 			response.headers().set(CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
@@ -91,7 +96,7 @@ public class HttpFileServerHandler/* extends SimpleChannelInboundHandler<FullHtt
 				if(total < 0) {
 					System.err.println("Transfer progress: " + progress);
 				} else {
-					System.err.println("Transfer progress" + progress + "/" + total);
+					System.err.println("Transfer progress: " + progress + "/" + total);
 				}
 			}
 
@@ -122,7 +127,7 @@ public class HttpFileServerHandler/* extends SimpleChannelInboundHandler<FullHtt
 		} catch(UnsupportedEncodingException e) {
 			try {
 				uri = URLDecoder.decode(uri, "ISO-8859-1");
-			} catch(UnsupportedEncodingException e) {
+			} catch(UnsupportedEncodingException e1) {
 				throw new Error();
 			}
 		}
@@ -166,13 +171,13 @@ public class HttpFileServerHandler/* extends SimpleChannelInboundHandler<FullHtt
 				continue;
 			}
 			buf.append("<li>链接: <a href=\"");
-			buf.append("name");
+			buf.append(name);
 			buf.append("\">");
-			buf.append("name");
+			buf.append(name);
 			buf.append("</a></li>\r\n");
 			buf.append("</ul></body></html>\r\n");
-			ByteBuf buffer = Unpooled.copiedBuffer(buf, CharsetUtil.UTF_8)
-			response.content().writeByte(buffer);
+			ByteBuf buffer = Unpooled.copiedBuffer(buf, CharsetUtil.UTF_8);
+			response.content().writeBytes(buffer);
 			buffer.release();
 			ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
 		}
@@ -195,5 +200,5 @@ public class HttpFileServerHandler/* extends SimpleChannelInboundHandler<FullHtt
 	private static void setContentTypeHeader(HttpResponse response, File file) {
 		MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
 		response.headers().set(CONTENT_TYPE, mimeTypesMap.getContentType(file.getPath()));
-	}*/
+	}
 }

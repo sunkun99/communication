@@ -17,6 +17,26 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
+      <profile default="false" name="Annotation profile for test" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="test" />
+      </profile>
+      <profile default="false" name="Annotation profile for netty" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="netty" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="communication" target="1.7" />
+      <module name="local" target="1.7" />
+      <module name="netty" target="1.7" />
+      <module name="test" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

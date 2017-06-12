@@ -46,7 +46,7 @@ public class EchoClient {
 	}
 
 	public static void main(String[] args) throws  Exception {
-		int port = 1010;
+		int port = 2020;
 		if (null != args && args.length > 0) {
 			try {
 				port = Integer.valueOf(port);
