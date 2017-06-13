@@ -38,7 +38,7 @@ public class HttpFileServer {
 						ch.pipeline().addLast("filerServerHandler", new HttpFileServerHandler(url));
 					}
 				});
-			ChannelFuture future = b.bind(/*"192.168.3.102", */port).sync();
+			ChannelFuture future = b.bind("localhost", port).sync();
 			System.out.println("HTTP文件目录服务器启动，网址是：" + "http://localhost:" + port + url);
 			future.channel().closeFuture().sync();
 		} finally {
