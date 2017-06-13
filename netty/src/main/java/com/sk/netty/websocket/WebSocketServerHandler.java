@@ -27,8 +27,10 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 	@Override
 	protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
 		if(msg instanceof FullHttpRequest) {
+			System.out.println("handShank message:" + msg);
 			handleHttpRequest(ctx, (FullHttpRequest)msg);
 		} else if(msg instanceof WebSocketFrame) {
+			System.out.println("websocket message:" + msg);
 			handleWebSocketFrame(ctx, (WebSocketFrame)msg);
 		}
 	}
