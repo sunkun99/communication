@@ -82,7 +82,7 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
 		}
 
 		long fileLength = randomAccessFile.length();
-		HttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, OK);
+		HttpResponse response = new DefaultHttpResponse(HttpVersion.HTTP_1_1, OK);
 		setContentLength(response, fileLength);
 		setContentTypeHeader(response, file);
 		if (isKeepAlive(request)) {
@@ -161,7 +161,7 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
 		buf.append(dirPath).append(" 目录： ");
 		buf.append("<h3>\r\n");
 		buf.append("<ul>");
-		buf.append("<li>连接： <a href=\"../\">..</a></li>\r\n");
+		buf.append("<li>上级目录： <a href=\"../\">..</a></li>\r\n");
 		for (File f : dir.listFiles()) {
 			if (f.isHidden() || !f.canRead()) {
 				continue;
