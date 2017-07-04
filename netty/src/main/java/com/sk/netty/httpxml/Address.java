@@ -66,4 +66,17 @@ public class Address {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Address{");
+		sb.append("street1='").append(street1).append('\'');
+		sb.append(", street2='").append(street2).append('\'');
+		sb.append(", city='").append(city).append('\'');
+		sb.append(", state='").append(state).append('\'');
+		sb.append(", postCode='").append(postCode).append('\'');
+		sb.append(", country='").append(country).append('\'');
+		sb.append('}');
+		return sb.toString();
+	}
 }

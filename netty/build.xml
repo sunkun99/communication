@@ -2,21 +2,27 @@
 <project default="main" basedir=".">
     <path id="classpath">
         <dirset dir="${basedir}/target/classes" />
-        <fileset dir="D:/Repository/org/jibx/jibx-bind/1.3.1" includes="*.jar" />
-        <fileset dir="D:/Repository/org/jibx/jibx-run/1.3.1/" includes="*.jar" />
-        <fileset dir="D:/Repository/org/apache/bcel/bcel/6.0" includes="*.jar" />
+        <fileset dir="D:\Repository\org\jibx\jibx-tools\1.3.1\" includes="*.jar" />
+        <fileset dir="D:\Repository\org\jibx\jibx-bind\1.3.1\" includes="*.jar" />
+        <fileset dir="D:\Repository\org\jibx\jibx-run\1.3.1\" includes="*.jar" />
+        <fileset dir="D:\Repository\org\jibx\jibx-schema\1.3.1\" includes="*.jar" />
+        <fileset dir="D:\Repository\org\jibx\jibx-extras\1.3.1\" includes="*.jar" />
+        <fileset dir="D:\Repository\xpp3\xpp3\1.1.3.4.O\" includes="*.jar" />
+        <fileset dir="D:\Repository\org\apache\bcel\bcel\6.0" includes="*.jar" />
+        <fileset dir="D:\Repository\log4j\log4j\1.2.17" includes="*.jar" />
+        <fileset dir="D:\Repository\com\thoughtworks\qdox\qdox\1.12.1" includes="*.jar" />
     </path>
-    <target name="main" depends="compile,binggen, bind" description="Main target" />
+    <target name="main" depends="compile,binggen,bind" description="Main target" />
     <target name="compile" description="Compilation target">
         <echo>Building file.</echo>
         <javac srcdir="${basedir}/src/main/java" destdir="${basedir}/target/classes" includeantruntime="true" />
     </target>
     <target name="binggen">
         <echo message="Running BindGen tool" />
-        <java classpathref="classpath" fork="true" failonerror="true" classname="org.jibx.binding.BindingGenerator">
-            <arg value="com.sk.netty.httpxml.Order" />
+        <java classpathref="classpath" fork="true" failonerror="true" classname="org.jibx.binding.generator.BindGen">
             <arg value="com.sk.netty.httpxml.Address" />
             <arg value="com.sk.netty.httpxml.Customer" />
+            <arg value="com.sk.netty.httpxml.Order" />
             <arg value="com.sk.netty.httpxml.Shipping" />
         </java>
     </target>

@@ -48,4 +48,6 @@ public class Customer {
 	public void setMiddleNames(List<String> middleNames) {
 		this.middleNames = middleNames;
 	}
+
+
 }
