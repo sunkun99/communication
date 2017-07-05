@@ -41,7 +41,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 	}
 
 	protected void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest req) throws Exception {
-		if(!req.getDecoderResult().isSuccess() || !"websocket".equals(req.headers().get("upgrade"))) {
+		if(!req.getDecoderResult().isSuccess() || !"websocket".equalsIgnoreCase(req.headers().get("upgrade"))) {
 			sendHttpResponse(ctx, req, new DefaultFullHttpResponse(HTTP_1_1, HttpResponseStatus.BAD_REQUEST));
 		}
 		WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory("ws://localhost:9999/websocket", null, false);
