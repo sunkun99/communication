@@ -1,4 +1,4 @@
-package com.sk.netty;
+package com.sk.netty.simple;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
