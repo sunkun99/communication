@@ -29,8 +29,8 @@ public class HttpXmlRequestEncoder extends AbstractHttpXmlEncoder<HttpXmlRequest
 			headers.set(HttpHeaders.Names.ACCEPT_LANGUAGE, "ZH");
 			headers.set(HttpHeaders.Names.USER_AGENT, "Netty xml Http Client side");
 			headers.set(HttpHeaders.Names.ACCEPT, "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-			HttpHeaders.setContentLength(request, body.readableBytes());
-			out.add(request);
 		}
+		HttpHeaders.setContentLength(request, body.readableBytes());
+		out.add(request);
 	}
 }

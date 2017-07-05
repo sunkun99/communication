@@ -40,31 +40,7 @@ public class Test {
 
 	public static void main(String[] args) throws JiBXException, IOException {
 		Test test = new Test();
-		Customer customer = new Customer();
-		customer.setCustomerNumer(1);
-		customer.setFirstName("孙");
-		customer.setLastName("锟");
-		Address address = new Address();
-		address.setCountry("中国");
-		address.setState("上海市");
-		address.setCity("上海市");
-		address.setPostCode("200000");
-		address.setStreet1("浦东新区");
-		address.setStreet2("世纪大道");
-		Address address1 = new Address();
-		address1.setCountry("中国");
-		address1.setState("上海市");
-		address1.setCity("上海市");
-		address1.setPostCode("200000");
-		address1.setStreet1("徐汇区");
-		address1.setStreet2("凯滨路");
-		Order order = new Order();
-		order.setBillTo(address);
-		order.setCustomer(customer);
-		order.setOrderNumber(1);
-		order.setShipping(Shipping.INTERNATIONAL_MAIL);
-		order.setShipTo(address1);
-		order.setTotal(9999f);
+		Order order = OrderFactory.create(1234);
 		String body = test.encode2Xml(order);
 		Order order2 = test.decode2Order(body);
 		System.out.println(order2);

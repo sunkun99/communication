@@ -48,6 +48,7 @@ public class HttpXmlServerHandler extends SimpleChannelInboundHandler<HttpXmlReq
 		address.setCity("洛阳");
 		address.setCountry("大唐");
 		address.setState("河南道");
+		address.setStreet1("哇哈哈哈哈");
 		address.setPostCode("123456");
 		order.setBillTo(address);
 		order.setShipTo(address);
