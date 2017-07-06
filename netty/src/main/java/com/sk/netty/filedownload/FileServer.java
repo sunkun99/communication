@@ -12,6 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
 /**
@@ -31,10 +32,10 @@ public class FileServer {
 				.childHandler(new ChannelInitializer<SocketChannel>() {
 					@Override
 					protected void initChannel(SocketChannel ch) throws Exception {
-						ch.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
-						ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
-						ch.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
-						ch.pipeline().addLast(new FileServerHandler());
+						ch.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8),
+							new LineBasedFrameDecoder(1024),
+							new StringDecoder(CharsetUtil.UTF_8),
+							new FileServerHandler());
 					}
 				});
 			ChannelFuture f = b.bind(port).sync();
