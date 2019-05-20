@@ -1,4 +1,3 @@
 netty/target/*
 test/target/*
-.idea/*
 *.iml
