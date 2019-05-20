@@ -9,7 +9,6 @@ import org.jibx.runtime.IUnmarshallingContext;
 
 import java.io.StringReader;
 import java.nio.charset.Charset;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
