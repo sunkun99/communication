@@ -1,0 +1,7 @@
+使用命令行生成jibx辅助class
+
+进入target/classes目录执行一下命令：
+
+java -cp E:\Downloads\jibx_1_3_1\jibx\lib\jibx-tools.jar org.jibx.binding.generator.BindGen -v com.sk.netty.httpxml.Address com.sk.netty.httpxml.Customer com.sk.netty.httpxml.Order com.sk.netty.httpxml.Shipping
+
+java -cp E:\Downloads\jibx_1_3_1\jibx\lib\jibx-bind.jar org.jibx.binding.Compile -v binding.xml

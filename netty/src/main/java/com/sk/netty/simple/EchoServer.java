@@ -1,4 +1,4 @@
-package com.sk.netty;
+package com.sk.netty.simple;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
@@ -14,8 +14,6 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-
-import java.nio.charset.Charset;
 
 /**
  * Created with IntelliJ IDEA.
