@@ -2,3 +2,4 @@ netty/target/*
 test/target/*
 socket/target/*
 *.iml
+*.xml
