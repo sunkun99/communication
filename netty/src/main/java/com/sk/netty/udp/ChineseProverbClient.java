@@ -37,7 +37,7 @@ public class ChineseProverbClient {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		int port = 2222;
+		int port = 5555;
 		if(args.length > 0) {
 			try {
 				port = Integer.parseInt(args[0]);

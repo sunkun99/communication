@@ -51,7 +51,7 @@ public class HttpFileServer {
 	}
 
 	public static void main(String[] args) throws Exception {
-		int port = 3030;
+		int port = 1111;
 		if(args.length > 0) {
 			try {
 				port = Integer.parseInt(args[0]);

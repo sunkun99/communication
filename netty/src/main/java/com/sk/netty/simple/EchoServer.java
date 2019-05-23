@@ -61,7 +61,7 @@ public class EchoServer {
    }
 
 	public static void main(String[] args) throws Exception {
-		int port = 2020;
+		int port = 4444;
 		if(args != null && args.length > 0) {
 			try {
 				port = Integer.valueOf(args[0]);

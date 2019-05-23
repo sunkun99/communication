@@ -48,7 +48,7 @@ public class HttpXmlClient {
 	}
 
 	public static void main(String[] args) throws Exception {
-		int port = 8080;
+		int port = 2222;
 		if(null != args && args.length > 0) {
 			try {
 				port = Integer.valueOf(args[0]);
