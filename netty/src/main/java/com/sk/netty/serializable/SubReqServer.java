@@ -28,6 +28,11 @@ import java.util.concurrent.TimeoutException;
  * User: sunkun
  * Date: 2017/5/15
  * Time: 13:22
+ *
+ * 序列化实例, objectDecoder和objectEncode
+ *
+ * 实现在服务端和客户端的序列化和反序列化操作
+ *
  */
 public class SubReqServer {
 	public void bind(int port) throws Exception {

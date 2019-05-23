@@ -11,6 +11,9 @@ import io.netty.channel.socket.nio.NioDatagramChannel;
  * User: sunkun
  * Date: 2017/7/5
  * Time: 15:57
+ *
+ * 测试udp协议,注意channel参数
+ *
  */
 public class ChineseProverbServer {
 	public void run(int port) throws InterruptedException {

@@ -10,7 +10,7 @@ import io.netty.channel.ChannelHandlerContext;
  * Date: 2017/5/5
  * Time: 14:02
  */
-public class EchoClientHandler extends ChannelHandlerAdapter{
+public class EchoClientHandler extends ChannelHandlerAdapter {
 	private int counter;
 
 	static final String ECHO_REQ = "Hi, sk. Welcome to Netty.$_";

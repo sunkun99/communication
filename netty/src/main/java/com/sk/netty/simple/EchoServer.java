@@ -20,6 +20,10 @@ import io.netty.handler.logging.LoggingHandler;
  * User: sunkun
  * Date: 2017/5/2
  * Time: 18:10
+ *
+ * 解决半包问题, 分隔符
+ *
+ *
  */
 public class EchoServer {
    public void bind(int port) throws Exception {

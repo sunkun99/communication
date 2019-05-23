@@ -16,6 +16,9 @@ import io.netty.handler.stream.ChunkedWriteHandler;
  * User: sunkun
  * Date: 2017/6/13
  * Time: 14:13
+ *
+ * 支持webSocket, 启动server打开html观察
+ *
  */
 public class WebSocketServer {
 	public void run(int port)throws Exception {

@@ -17,6 +17,9 @@ import io.netty.handler.stream.ChunkedWriteHandler;
  * User: sunkun
  * Date: 2017/5/31
  * Time: 12:52
+ *
+ * 简单的http服务器, 页面显示当前某个指定目录的文件系统的目录,可下载文件
+ *
  */
 public class HttpFileServer {
 	private static final String DEFAULT_URL = "/netty/src";
