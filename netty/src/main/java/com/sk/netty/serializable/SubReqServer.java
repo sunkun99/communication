@@ -48,6 +48,10 @@ public class SubReqServer {
 				.childHandler(new ChannelInitializer<SocketChannel>() {
 					@Override
 					public void initChannel(SocketChannel ch) {
+						/* 为了防止异常码流和解码错位导致的内存溢出，这里将单个对象最大序列化后的字节数组长度设置为1M
+						 * weakCachingConcurrentResolver创建线程安全的WeakReferenceMap对类加载器进行缓存，
+						 * 它支持多线程并发访问，内存不足时，会释放缓存中的内存，防止内存泄漏。
+						 */
 						ch.pipeline().addLast(new ObjectDecoder(1024 * 1024, ClassResolvers.weakCachingResolver(this.getClass().getClassLoader())));
 						ch.pipeline().addLast(new ObjectEncoder());
 						ch.pipeline().addLast(new SubReqServerHandler());

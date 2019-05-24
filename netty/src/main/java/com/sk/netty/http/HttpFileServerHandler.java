@@ -89,8 +89,11 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
 			response.headers().set(CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
 		}
 		ctx.write(response);
+		//异步future结果,执行异步写入文件内容操作
 		ChannelFuture sendFileFuture = ctx.write(new ChunkedFile(randomAccessFile, 0, fileLength, 8192), ctx.newProgressivePromise());
+		//异步结果处理回调函数
 		sendFileFuture.addListener(new ChannelProgressiveFutureListener() {
+			//处理中结果显示
 			@Override
 			public void operationProgressed(ChannelProgressiveFuture future, long progress, long total) throws Exception {
 				if (total < 0) {
@@ -99,14 +102,16 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
 					System.err.println("Transfer progress: " + progress + "/" + total);
 				}
 			}
-
+			//处理结束结果显示
 			@Override
 			public void operationComplete(ChannelProgressiveFuture futre) throws Exception {
 				System.out.println("Trasnfer complete.");
 			}
 		});
+		//写response结束符并冲刷至客户端
 		ChannelFuture lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
 		if (!isKeepAlive(request)) {
+			// 如果没有请求keep-alive，则在写操作完成后关闭Channel
 			lastContentFuture.addListener(ChannelFutureListener.CLOSE);
 		}
 	}

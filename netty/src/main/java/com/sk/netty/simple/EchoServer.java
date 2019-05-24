@@ -35,6 +35,7 @@ public class EchoServer {
 		   ServerBootstrap b = new ServerBootstrap();
 		   b.group(bossGroup, workerGroup)
 			   .channel(NioServerSocketChannel.class)
+			   //系统accept queue大小(当前参数和系统somaxconn的较小值)
 			   .option(ChannelOption.SO_BACKLOG, 100)
 			   .handler(new LoggingHandler((LogLevel.INFO)))
 			   .childHandler(new ChannelInitializer<SocketChannel>() {
